@@ -237,7 +237,7 @@ sub openfile {
 	my $n = $self->{t_source}->GetLineCount;
 	$self->log( 'S', "Loaded: $file ($n line" . ( $n == 1 ? "" : "s" ) . ")");
     }
-    $self->SetTitle( $self->{_windowtitle} = $file);
+
 
     $self->{prefs_xpose} = 0;
     $self->{prefs_xposesharp} = 0;
@@ -323,7 +323,7 @@ sub saveas {
 sub save_as {
     my ( $self, $file ) = @_;
     $self->{t_source}->SaveFile($file);
-    $self->SetTitle( $self->{_windowtitle} = $file);
+
     $self->log( 'S',  "Saved." );
 }
 
@@ -365,8 +365,6 @@ sub delete {
 
 sub alert {
     my ( $self ) = @_;
-    $self->{b_msgs}->SetBackgroundColour(Wx::Colour->new(255, 0, 0));
-    $self->{bmb_messages}->SetBackgroundColour(Wx::Colour->new(255, 0, 0));
 }
 
 ################ Event Handlers ################
@@ -402,8 +400,6 @@ sub OnPreviewSave {
 
 sub OnShowMessages {
     my ( $self, $event ) = @_;
-    $self->{b_msgs}->SetBackgroundColour(wxNullColour);
-    $self->{bmb_messages}->SetBackgroundColour(wxNullColour);
     $self->GetParent->{_prev_mode} = "EDIT";
     $self->GetParent->select_mode("MSGS");
 }

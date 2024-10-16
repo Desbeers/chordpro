@@ -1043,7 +1043,7 @@ sub OnIdle {
     return if $self->{p_init}->IsShown;
     my $f = $self->{_windowtitle} // "";
 #    $f = "*$f" if $self->{t_source}->IsModified;
-    $self->SetTitle($f);
+
     return;
     my $t = $self->{nb_main}->GetPageText(0);
     if ( $self->{t_source}->IsModified && $t =~ s/^(?!\*)/*/ ) {
