@@ -381,11 +381,13 @@ sub OnPreferences {
 
 sub OnPreview {
     my ( $self, $event ) = @_;
+	$self->{buttonPreview}->SetLabel("Hide Preview");
     $self->GetParent->preview( [], target => $self );
 }
 
 sub OnPreviewClose {
     my ( $self, $event ) = @_;
+	$self->{buttonPreview}->SetLabel("Show Preview");
     return unless $self->{sw_main}->IsSplit;
     $self->{sw_main}->Unsplit(undef);
     $self->{b_preview_close}->Show(0);
